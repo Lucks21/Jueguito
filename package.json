@@ -1,6 +1,7 @@
 {
   "name": "jueguito",
   "version": "1.0.0",
+  "type": "module",
   "description": "Proyecto juego Star Battle.",
   "main": "index.js",
   "directories": {
