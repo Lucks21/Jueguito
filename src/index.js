@@ -1,10 +1,10 @@
 import Board from './board.js';
-import aStarSolver from './algorithms/aStar.js';
+import aStarSolver from './algoritmos/aStar.js';
 
 // Crear una instancia del tablero
 const board = new Board();
 // Puedes configurar el tablero inicial aquí, por ejemplo colocando algunas estrellas
-
+console.log("Tablero inicial:", board.grid);
 // Ejecutar el algoritmo A*
 const solution = aStarSolver(board);
 
