@@ -6,7 +6,20 @@
 function countStarsInRow(board, row) {
     return board.grid[row].reduce((count, cell) => count + cell, 0);
 }
-
+/**
+ * Obtiene la región a la que pertenece una celda específica.
+ */
+function getRegion(row, col) {
+    const regions = getRegions(); // Obtener todas las regiones definidas
+    for (let i = 0; i < regions.length; i++) {
+        for (let cell of regions[i]) {
+            if (cell[0] === row && cell[1] === col) {
+                return regions[i]; // Devuelve la región en la que está la celda
+            }
+        }
+    }
+    return null; // Retorna null si no se encuentra una región correspondiente
+}
 /**
  * Cuenta las estrellas en una columna específica del tablero.
  */
@@ -71,5 +84,6 @@ export default {
     countStarsInRegion,
     hasAdjacentStar,
     createEmptyBoard,
-    getRegions
+    getRegions,
+    getRegion
 };

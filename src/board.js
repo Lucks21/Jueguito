@@ -28,7 +28,7 @@ class Board {
         for (let row = 0; row < this.size; row++) {
             const starCount = boardUtils.countStarsInRow(this, row);
             if (starCount > 2) {
-                console.log("Fila mala");
+                console.log(`Fila ${row} tiene más de 2 estrellas`);
                 return false;
             }
         }
@@ -37,17 +37,16 @@ class Board {
         for (let col = 0; col < this.size; col++) {
             const starCount = boardUtils.countStarsInColumn(this, col);
             if (starCount > 2) {
-                console.log("Columna mala");
+                console.log(`Columna ${col} tiene más de 2 estrellas`);
                 return false;
             }
         }
-
         // Verifica regiones
         const regions = boardUtils.getRegions();
-        for (let region of regions) {
-            const starCount = boardUtils.countStarsInRegion(this, region);
+        for (let regionIndex in regions) {
+            const starCount = boardUtils.countStarsInRegion(this, regions[regionIndex]);
             if (starCount > 2) {
-                console.log("Region mala");
+                console.log(`Región ${regionIndex} tiene más de 2 estrellas`);
                 return false;
             }
         }
@@ -57,43 +56,33 @@ class Board {
             for (let col = 0; col < this.size; col++) {
                 if (this.grid[row][col] === 1) {
                     if (boardUtils.hasAdjacentStar(this, row, col)) {
-                        console.log("Adyacencia mala");
+                        console.log(`Estrella en (${row}, ${col}) tiene una adyacente`);
                         return false;
                     }
                 }
             }
         }
-
+    
         return true;
     }
 
     // Método auxiliar para verificar si el tablero es el objetivo (completamente válido)
     isGoal() {
-        // Asegúrate de que el tablero cumple con todas las reglas
-        // Verifica que cada fila tenga exactamente 2 estrellas
-        
+        // Verifica que cada fila, columna, y región tengan exactamente dos estrellas
         for (let row = 0; row < this.size; row++) {
-            const starCount = boardUtils.countStarsInRow(this, row);
-            if (starCount !== 2) return false;
+            if (boardUtils.countStarsInRow(this, row) !== 2) return false;
         }
-
-        // Verifica que cada columna tenga exactamente 2 estrellas
+    
         for (let col = 0; col < this.size; col++) {
-            const starCount = boardUtils.countStarsInColumn(this, col);
-            if (starCount !== 2) return false;
+            if (boardUtils.countStarsInColumn(this, col) !== 2) return false;
         }
-
-        // Verifica que cada región tenga exactamente 2 estrellas
+    
         const regions = boardUtils.getRegions();
         for (let region of regions) {
-            const starCount = boardUtils.countStarsInRegion(this, region);
-            if (starCount !== 2) return false;
+            if (boardUtils.countStarsInRegion(this, region) !== 2) return false;
         }
-        const result = this.isValid();
-        if (result) {
-            console.log("Estado objetivo alcanzado en isGoal.");
-        }
-        return result;
+    
+        return true; // Cumple con la condición de meta
     }
     
 }
