@@ -6,22 +6,21 @@ test('Calcula la heurística correctamente', () => {
     const board = new Board();
     board.placeStar(0, 0);
     const heuristicValue = heuristic(board);
-    expect(heuristicValue).toBeGreaterThan(0); // Ejemplo de expectativa, ajusta según el caso
+    expect(heuristicValue).toBeGreaterThan(0);
 });
 
 test('Genera estados sucesores válidos', () => {
     const board = new Board();
     const successors = generateSuccessors(board);
-    expect(successors.length).toBeGreaterThan(0); // Debería haber al menos un sucesor
+    expect(successors.length).toBeGreaterThan(0);
     successors.forEach(successor => {
-        expect(successor.isValid()).toBe(true); // Cada sucesor debe ser válido
+        expect(successor.isValid()).toBe(true);
     });
 });
 
 test('Encuentra una solución válida', () => {
     const board = new Board();
-    // Coloca algunas estrellas para configurar el tablero
     const solution = aStarSolver(board);
-    expect(solution).not.toBeNull(); // Debe encontrar una solución
-    expect(solution.isGoal()).toBe(true); // La solución debe cumplir las reglas del juego
+    expect(solution).not.toBeNull();
+    expect(solution.isGoal()).toBe(true);
 });

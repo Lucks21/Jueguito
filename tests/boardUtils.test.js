@@ -1,4 +1,3 @@
-// boardUtils.test.js
 import boardUtils from '../src/utils/boardUtils.js';
 import Board from '../src/board.js';
 import { test, expect } from '@jest/globals';
