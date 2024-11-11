@@ -10,7 +10,7 @@ Para ejecutar el programa, debe abrir el terminal y ejecutar el siguiente comand
 node src/index.js
 ```
 
-##Dependencias instaladas: 
+## Dependencias instaladas: 
     jest:  es un framework de pruebas unitarias
     eslint: verifica la sintaxis y otros problemas en tu código
     babel: transpilador para compatibilidad
