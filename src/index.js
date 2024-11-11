@@ -11,6 +11,4 @@ const solution = aStarSolver(board);
 if (solution) {
     console.log("¡Solución encontrada!");
     solution.printBoard();
-} else {
-    console.log("No se encontró una solución.");
 }
